@@ -4,16 +4,16 @@ import menu from "./menu";
 Vue.use(Router);
 export default new Router({
     mode: 'history', // 'hash'
-    linkActiveClass: 'active',
+    linkActiveClass: ' ',
     // scrollBehavior: () => ({ y: 0 }),
     routes: [
 
         ...createRoutesFromMenu(menu),
 
-        {
-            path: '*',
-            redirect: '/'
-        }
+        // {
+        //     path: '*',
+        //     redirect: '/'
+        // }
     ]
 })
 

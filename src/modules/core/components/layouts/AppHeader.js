@@ -23,7 +23,7 @@ import Component from "vue-class-component";
                         <!--Links-->
                         <ul class="nav navbar-nav pull-right">
                             <li class="nav-item">
-                                <a class="nav-link" >Home <span class="sr-only">(current)</span></a>
+                                <router-link to="/" class="nav-link">Home</router-link>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#about-us">About Us</a>
@@ -33,6 +33,9 @@ import Component from "vue-class-component";
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/auth/login" class="nav-link">Login</router-link>
                             </li>
                         </ul>
                     </div>
