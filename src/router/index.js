@@ -10,10 +10,6 @@ export default new Router({
 
         ...createRoutesFromMenu(menu),
 
-        // {
-        //     path: '*',
-        //     redirect: '/'
-        // }
     ]
 })
 

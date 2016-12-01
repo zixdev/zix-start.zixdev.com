@@ -31,5 +31,5 @@ export default [
             auth: true,
         },
         component: lazyLoading('+auth/logout')
-    },
+    }
 ]

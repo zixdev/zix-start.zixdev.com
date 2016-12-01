@@ -69,7 +69,7 @@
 
 </template>
 
-<script>
+<script type="text/babel">
     import Component from 'vue-class-component'
     import AppState from '../../../../store';
     @Component

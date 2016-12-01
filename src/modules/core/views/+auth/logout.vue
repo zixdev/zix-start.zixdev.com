@@ -1,4 +1,4 @@
-<script>
+<script type="text/babel">
     import Component from 'vue-class-component'
 
     @Component({
