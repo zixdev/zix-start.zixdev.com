@@ -34,9 +34,8 @@ Vue.use(VueProgressBar, {
 });
 
 window['$'] = window['jQuery'] = window['jquery'] = $;
-// require('bootstrap-sass');
-// require('metismenu');
-
+window['Tether'] = require('tether');
+require('bootstrap');
 
 
 

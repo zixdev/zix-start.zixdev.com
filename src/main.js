@@ -1,6 +1,5 @@
 import Vue from "vue";
 import "./plugins";
-// import "./md_js/app";
 import App from "./App";
 import router from "./router";
 import Guard from "./modules/core/guard";
@@ -20,11 +19,11 @@ Vue.http.interceptors.push(function (request, next) {
 });
 
 
-// router.beforeEach((route, redirect, next) => {
-//     store.commit('updateRouter', route);
-//     Guard(route, redirect, next);
-//     next()
-// });
+router.beforeEach((route, redirect, next) => {
+    store.commit('updateRouter', route);
+    Guard(route, redirect, next);
+    next()
+});
 
 const app = new Vue({
     template: '<App/>',

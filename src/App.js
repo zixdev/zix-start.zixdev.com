@@ -1,7 +1,5 @@
 import Component from "vue-class-component";
-import AppBreadCrumb from "./modules/core/components/layouts/AppBreadCrumb";
-import AppFooter from "./modules/core/components/layouts/AppFooter";
-import AppSidebar from "./modules/core/components/layouts/AppSidebar";
+import AppFooter from "./modules/core/components/layouts/Footer.vue";
 import AppHeader from "./modules/core/components/layouts/Header.vue";
 import toastr from "toastr";
 
@@ -24,7 +22,7 @@ import toastr from "toastr";
         </div>
     `,
     components: {
-        AppFooter, AppSidebar, AppHeader, AppBreadCrumb
+        AppFooter, AppHeader
     },
     style: require('./styles/app.scss'),
 
