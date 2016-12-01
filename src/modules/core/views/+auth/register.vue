@@ -9,7 +9,19 @@
                         <div v-if="form.errors && form.errors.message" class="alert alert-danger">
                             {{form.errors.message}}
                         </div>
-                        <form @submit.prevent="login()">
+                        <form @submit.prevent="register()">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-edit"></i>
+                                </span>
+                                <input class="form-control"
+                                       type="text"
+                                       name="username"
+                                       :placeholder="$t('table.username')"
+                                       v-model="user.username"
+                                       required
+                                >
+                            </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="fa fa-envelope"></i>
@@ -17,10 +29,9 @@
                                 <input class="form-control"
                                        type="email"
                                        name="name"
-                                       :placeholder="$t('auth.email')"
+                                       :placeholder="$t('table.email')"
                                        v-model="user.email"
                                        required
-                                       id="userEmail"
                                 >
                             </div>
                             <div class="input-group">
@@ -30,30 +41,37 @@
                                 <input class="form-control"
                                        type="password"
                                        name="password"
-                                       :placeholder="$t('auth.password')"
+                                       :placeholder="$t('table.password')"
                                        v-model="user.password"
+                                       required
+                                >
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input class="form-control"
+                                       type="password"
+                                       :placeholder="$t('table.password_confirmation')"
+                                       v-model="user.password_confirmation"
                                        required
                                 >
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    {{$t('auth.remember_me')}}
+                                    <input class="form-check-input" type="checkbox" v-model="user.accept_terms">
+                                    {{$t('auth.accept_terms')}}
+                                    <a href="javascript:void(0);">
+                                        {{$t('auth.terms')}}
+                                    </a>
                                 </label>
                             </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i v-if="form.submitting" class="fa fa-spinner fa-pulse"></i>
-                                        <i v-else class="fa fa-sign-in"></i>
-                                        {{$t('auth.login')}}
-                                    </button>
-                                </div>
-                                <div class="col-md-9">
-                                    <router-link class="btn btn-link" to="/auth/forgot-password">
-                                        Forgot Your Password ?
-                                    </router-link>
-                                </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
+                                    <i v-if="form.submitting" class="fa fa-spinner fa-pulse"></i>
+                                    <i v-else class="fa fa-check-circle"></i>
+                                    {{$t('auth.register')}}
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -69,15 +87,11 @@
 
 <script type="text/babel">
     import Component from 'vue-class-component'
-    import AppState from '../../../../store';
     @Component
-    export default class Login {
+    export default class Register {
         data() {
             return {
-                user: {
-                    email:'',
-                    password: ''
-                },
+                user: {},
                 form: {
                     submitting: false,
                     submitted: false,
@@ -86,9 +100,9 @@
             }
         }
 
-        login() {
+        register() {
             this.form.submitting = true;
-            this.$http.post(this.$store.state.config.api_url + 'login', this.user)
+            this.$http.post(this.$store.state.config.api_url + 'register', this.user)
                 .then(response => {
                     let res = response.data.data;
                     localStorage.setItem('token', res.token);
@@ -98,11 +112,13 @@
 
                     this.$store.state.authorized = true;
                     this.$router.push({name: 'home'});
+
+
                 })
                 .catch(error => {
                     this.form.errors = error.data;
                     this.form.submitting = false;
-                    if (error.status == 0) {
+                    if(error.status == 0) {
                         this.form.errors = {
                             message: 'Oops Couldn\'t connect to the server, please check your network.'
                         }

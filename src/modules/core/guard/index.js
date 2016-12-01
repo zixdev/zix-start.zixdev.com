@@ -5,7 +5,7 @@ export default function (route, redirect, next) {
         next('/auth/login')
     }
     // if requires a guest
-    if(!route.meta.auth && localStorage.getItem('token')) {
+    if(route.meta.guest && localStorage.getItem('token')) {
         next('/');
     }
     // get user data and store it.

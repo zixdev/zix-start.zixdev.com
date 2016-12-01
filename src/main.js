@@ -20,7 +20,7 @@ Vue.http.interceptors.push(function (request, next) {
 
 
 router.beforeEach((route, redirect, next) => {
-    store.commit('updateRouter', route);
+    // store.commit('updateRouter', route);
     Guard(route, redirect, next);
     next()
 });

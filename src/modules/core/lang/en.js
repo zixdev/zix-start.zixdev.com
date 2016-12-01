@@ -9,8 +9,12 @@ export default {
     auth: {
         login: 'Login',
         logout: 'Logout',
+        register: 'Register',
         email: 'Email',
-        password: 'Password'
+        password: 'Password',
+        remember_me: 'Remember Me',
+        accept_terms: 'I Accept The',
+        terms: 'Term Of Service'
     },
     pages: {
         index: 'Pages',

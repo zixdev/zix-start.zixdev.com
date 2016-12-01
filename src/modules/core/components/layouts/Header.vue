@@ -1,39 +1,43 @@
 <template>
     <header>
-        <!--Navbar-->
-        <nav class="navbar navbar-dark default-color">
-        <!--<nav class="navbar navbar-fixed-top scrolling-navbar navbar-dark default-color">-->
-
-            <!-- Collapse button-->
-            <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx">
-                <i class="fa fa-bars"></i>
-            </button>
-
+        <nav class="navbar navbar-light bg-faded">
             <div class="container">
-
-                <!--Collapse content-->
-                <div class="collapse navbar-toggleable-xs" id="collapseEx">
-                    <!--Navbar Brand-->
-                    <a class="navbar-brand" href="/">
-                        <b>Zix</b> Development
-                    </a>
-                    <!--Links-->
-                    <ul class="nav navbar-nav pull-right">
-                        <li v-for="menu of menus" class="nav-item">
-                            <router-link :to="menu.url" class="nav-link">
-                                {{ menu.name }}
+                <router-link class="navbar-brand" to="/">
+                    Zix Development
+                </router-link>
+                <ul class="nav navbar-nav pull-right">
+                    <li v-for="menu of menus" class="nav-item">
+                        <router-link :to="menu.url" class="nav-link">
+                            {{ menu.name }}
+                        </router-link>
+                    </li>
+                    <li v-if="!$store.state.authorized" class="nav-item">
+                        <router-link to="/auth/login" class="nav-link">
+                            {{ $t('auth.login') }}
+                        </router-link>
+                    </li>
+                    <li v-if="!$store.state.authorized" class="nav-item">
+                        <router-link to="/auth/register" class="nav-link">
+                            {{ $t('auth.register') }}
+                        </router-link>
+                    </li>
+                    <li v-if="$store.state.authorized" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="nav-profile-photo m-r-xs" src="https://www.gravatar.com/avatar/8798bd6307b5288654155f168d4288bf.jpg?s=200&amp;d=mm">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="supportedContentDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <router-link to="/auth/logout" class="dropdown-item">
+                                <i class="fa fa-sign-out"></i>
+                                {{ $t('auth.logout') }}
                             </router-link>
-                        </li>
-
-                    </ul>
-                </div>
-                <!--/.Collapse content-->
-
+                        </div>
+                    </li>
+                </ul>
             </div>
-
         </nav>
-        <!--/.Navbar-->
-
     </header>
 </template>
 
@@ -45,8 +49,9 @@
         get menus() {
             return [
                 {name: 'Home', url: '/'},
-                {name: 'Login', url: '/auth/login'},
-                {name: 'Register', url: '/auth/register'},
+                {name: 'About Us', url: '/'},
+                {name: 'Contact Us', url: '/'},
+
             ];
         }
 
@@ -60,5 +65,13 @@
     }
 </script>
 <style lang="scss" rel="stylesheet/scss">
-
+    header {
+        .nav-profile-photo {
+            border: 2px solid #d3e0e9;
+            border-radius: 50%;
+            padding: 2px;
+            height: 25px;
+            width: 25px;
+        }
+    }
 </style>

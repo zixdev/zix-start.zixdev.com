@@ -6,7 +6,7 @@ import toastr from "toastr";
 @Component({
     template: `
         <div  :class="$t('layout')">
-            <app-header  v-show="!authorized"></app-header>
+            <app-header></app-header>
             <vue-progress-bar></vue-progress-bar>
             
             <transition mode="out-in" 
@@ -17,7 +17,7 @@ import toastr from "toastr";
                 <router-view class="animated"></router-view>
             </transition>
             
-            <app-footer  v-show="!authorized"></app-footer>
+            <app-footer></app-footer>
     
         </div>
     `,
@@ -46,7 +46,10 @@ export default class App {
         if (token) {
             this.$http.get(this.$store.state.config.api_url + 'user')
                 .then(
-                    // res => console.info(res),
+                    res => {
+                        this.$store.state.authorized = true;
+                        this.$store.state.user = res.data.data.user
+                    }
                 )
                 .catch(err => {
                     localStorage.removeItem('token');

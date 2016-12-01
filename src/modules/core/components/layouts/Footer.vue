@@ -1,6 +1,6 @@
 <template>
     <div>
-        Footer.vue works
+
     </div>
 </template>
 
@@ -10,7 +10,7 @@
     @Component
     export default class Name {
         created() {
-            console.info('Footer.vue Been Created')
+            // console.info('Footer.vue Been Created')
         }
     }
 </script>

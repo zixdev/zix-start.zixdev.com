@@ -1,11 +1,5 @@
 <template>
-    <div>
-        <br>
-        <br>
-        <br>
-        <br>
 
-    </div>
 </template>
 <script type="text/babel">
     import Component from 'vue-class-component'
