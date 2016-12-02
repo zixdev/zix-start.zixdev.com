@@ -49,8 +49,8 @@
         get menus() {
             return [
                 {name: 'Home', url: '/'},
-                {name: 'About Us', url: '/'},
-                {name: 'Contact Us', url: '/'},
+                {name: 'About Us', url: '/about-us'},
+                {name: 'Contact Us', url: '/contact-us'},
 
             ];
         }

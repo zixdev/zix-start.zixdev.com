@@ -4,46 +4,14 @@ const lazyLoading = (name, index = false) => resolve => require([`../views/${nam
 
 export default [
     {
-        path: '/pages',
-        name: 'pages.index',
+        path: '/:slug',
+        name: 'page.view',
         meta: {
-            icon: 'fa-file-text-o',
-            menu: true,
-            auth: false,
+            // auth: true,
         },
-        component: lazyLoading('+pages', true),
-        children: [
-            /*
-             * Pages Routes
-             */
-            {
-                path: '/pages/',
-                name: 'pages.all',
-                meta: {
-                    menu: true,
-                    auth: true,
-                },
-                component: lazyLoading('+pages', true)
-            },
-            {
-                path: '/pages/add',
-                name: 'pages.add',
-                meta: {
-                    menu: true,
-                    auth: true,
-                },
-                component: lazyLoading('+pages/create')
-            },
+        component: lazyLoading('+pages', true)
 
-            {
-                path: '/pages/:id/edit',
-                name: 'pages.edit',
-                meta: {
-                    auth: true,
-                },
-                component: lazyLoading('+pages/create')
-            }
-        ]
-    },
+
+    }
 
 ];
