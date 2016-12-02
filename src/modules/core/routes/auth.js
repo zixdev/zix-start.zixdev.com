@@ -41,5 +41,14 @@ export default [
             auth: true,
         },
         component: lazyLoading('+auth/logout')
+    },
+    {
+        name: 'auth.indent_login',
+        path: '/auth/indent-login',
+        meta: {
+            icon: 'fa-tachometer',
+            guest: true,
+        },
+        component: lazyLoading('+auth/indent-login')
     }
 ]

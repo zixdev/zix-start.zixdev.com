@@ -118,11 +118,11 @@
                 .catch(error => {
                     this.form.errors = error.data;
                     this.form.submitting = false;
-                    if(error.status == 0) {
-                        this.form.errors = {
-                            message: 'Oops Couldn\'t connect to the server, please check your network.'
-                        }
-                    }
+                    // if(error.status == 0) {
+                    //     this.form.errors = {
+                    //         message: 'Oops Couldn\'t connect to the server, please check your network.'
+                    //     }
+                    // }
                 });
         }
     }

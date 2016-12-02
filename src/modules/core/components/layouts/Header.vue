@@ -23,7 +23,8 @@
                     </li>
                     <li v-if="$store.state.authorized" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="nav-profile-photo m-r-xs" src="https://www.gravatar.com/avatar/8798bd6307b5288654155f168d4288bf.jpg?s=200&amp;d=mm">
+                            <img v-if="user && user.avatar" class="nav-profile-photo m-r-xs" :src="user.avatar">
+                            <img v-else class="nav-profile-photo m-r-xs" src="https://www.gravatar.com/avatar/8798bd6307b5288654155f168d4288bf.jpg?s=200&amp;d=mm">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="supportedContentDropdown">
                             <a class="dropdown-item" href="#">Action</a>
@@ -53,6 +54,10 @@
                 {name: 'Contact Us', url: '/contact-us'},
 
             ];
+        }
+
+        get user() {
+            return this.$store.state.user
         }
 
         changeLang(lang) {

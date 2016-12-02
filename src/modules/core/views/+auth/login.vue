@@ -56,6 +56,17 @@
                                 </div>
                             </div>
                         </form>
+                        <hr>
+                        <div class="text-md-center">
+                            <strong>
+                                OR
+                            </strong> <br>
+                            Login With
+                            <div class="clearfix"></div>
+                                <a class="btn btn-link" href="http://localhost:8000/api/auth/social/login-with/github">
+                                    Github
+                                </a>
+                        </div>
                     </div>
                 </div>
 
