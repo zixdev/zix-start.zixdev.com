@@ -23,12 +23,14 @@
                     </li>
                     <li v-if="$store.state.authorized" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img v-if="user && user.avatar" class="nav-profile-photo m-r-xs" :src="user.avatar">
+                            <img v-if="$store.state.user && $store.state.user.avatar" class="nav-profile-photo m-r-xs" :src="$store.state.user.avatar">
                             <img v-else class="nav-profile-photo m-r-xs" src="https://www.gravatar.com/avatar/8798bd6307b5288654155f168d4288bf.jpg?s=200&amp;d=mm">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="supportedContentDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <router-link to="/user/settings/profile" class="dropdown-item">
+                                <i class="fa fa-cog"></i>
+                                {{ $t('user.settings.profile') }}
+                            </router-link>
                             <div class="dropdown-divider"></div>
                             <router-link to="/auth/logout" class="dropdown-item">
                                 <i class="fa fa-sign-out"></i>
@@ -54,10 +56,6 @@
                 {name: 'Contact Us', url: '/contact-us'},
 
             ];
-        }
-
-        get user() {
-            return this.$store.state.user
         }
 
         changeLang(lang) {

@@ -16,6 +16,14 @@ export default {
         accept_terms: 'I Accept The',
         terms: 'Term Of Service'
     },
+    user: {
+        settings: {
+            index: 'Settings',
+            profile: 'Profile',
+            security: 'Security',
+            social: 'Social',
+        }
+    },
     pages: {
         index: 'Pages',
         index_title: 'All Available Pages ',

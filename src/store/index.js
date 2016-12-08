@@ -4,7 +4,8 @@ const store = new Vuex.Store({
     state: {
         authorized: false,
         config: Config,
-        $router: {}
+        $router: {},
+        user: {}
     },
 
     mutations: {
