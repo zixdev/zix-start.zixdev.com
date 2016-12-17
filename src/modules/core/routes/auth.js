@@ -46,9 +46,24 @@ export default [
         name: 'auth.indent_login',
         path: '/auth/indent-login',
         meta: {
-            icon: 'fa-tachometer',
             guest: true,
         },
         component: lazyLoading('+auth/indent-login')
+    },
+    {
+        name: 'auth.forgot_password',
+        path: '/auth/forgot-password',
+        meta: {
+            guest: true,
+        },
+        component: lazyLoading('+auth/forgot-password')
+    },
+    {
+        name: 'auth.account_activate',
+        path: '/auth/account/activate/:code',
+        meta: {
+            // guest: true,
+        },
+        component: lazyLoading('+auth/account-activate')
     }
 ]

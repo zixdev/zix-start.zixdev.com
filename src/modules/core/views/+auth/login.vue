@@ -3,53 +3,64 @@
         <div class="row">
 
             <!--Second column-->
-            <div class="col-lg-6 offset-lg-3">
+            <div class="col-md-8 offset-md-2">
                 <div class="card">
+                    <div class="card-header">
+                        Login
+                    </div>
                     <div class="card-block">
                         <div v-if="form.errors && form.errors.message" class="alert alert-danger">
                             {{form.errors.message}}
                         </div>
                         <form @submit.prevent="login()">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="fa fa-envelope"></i>
-                                </span>
-                                <input class="form-control"
-                                       type="email"
-                                       name="name"
-                                       :placeholder="$t('auth.email')"
-                                       v-model="user.email"
-                                       required
-                                       id="userEmail"
-                                >
+                            <div class="form-group row">
+                                <div class="col-md-4 text-md-right col-form-label">
+                                    {{ $t('table.email') }} :
+                                </div>
+                                <div class="col-md-8">
+                                    <input class="form-control"
+                                           type="email"
+                                           name="name"
+                                           :placeholder="$t('table.email')"
+                                           v-model="user.email"
+                                           required
+                                    >
+                                    <span v-if="getError('email')" class="text-danger clearfix">{{ getError('email') }}</span>
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="fa fa-lock"></i>
-                                </span>
-                                <input class="form-control"
-                                       type="password"
-                                       name="password"
-                                       :placeholder="$t('auth.password')"
-                                       v-model="user.password"
-                                       required
-                                >
+
+                            <div class="form-group row">
+                                <div class="col-md-4 text-md-right col-form-label">
+                                    {{ $t('table.password') }} :
+                                </div>
+                                <div class="col-md-8">
+                                    <input class="form-control"
+                                           type="password"
+                                           name="password"
+                                           :placeholder="$t('table.password')"
+                                           v-model="user.password"
+                                           required
+                                    >
+                                    <span v-if="getError('password')" class="text-danger clearfix">{{ getError('password') }}</span>
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    {{$t('auth.remember_me')}}
-                                </label>
+                            <div class="form-check row">
+                                <div class="col-md-8 offset-md-4">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        {{$t('auth.remember_me')}}
+                                    </label>
+                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-3">
+
+                            <div class="form-group row">
+
+                                <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         <i v-if="form.submitting" class="fa fa-spinner fa-pulse"></i>
                                         <i v-else class="fa fa-sign-in"></i>
                                         {{$t('auth.login')}}
                                     </button>
-                                </div>
-                                <div class="col-md-9">
                                     <router-link class="btn btn-link" to="/auth/forgot-password">
                                         Forgot Your Password ?
                                     </router-link>
@@ -57,15 +68,15 @@
                             </div>
                         </form>
                         <hr>
-                        <div class="text-md-center">
-                            <strong>
-                                OR
-                            </strong> <br>
-                            Login With
-                            <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-md-4 text-md-right">
+                                Login With :
+                            </div>
+                            <div class="col-md-8">
                                 <a class="btn btn-link" href="http://localhost:8000/api/auth/social/login-with/github">
                                     Github
                                 </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -95,6 +106,10 @@
                     errors: {}
                 }
             }
+        }
+
+        getError(name) {
+            return (this.form.errors && this.form.errors[name]) ? this.form.errors[name].toString() : false;
         }
 
         login() {
