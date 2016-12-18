@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a444d2c3-15c2-4e9c-b300-a703f0fe286f" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/modules/core/views/+auth/account-activate.vue" afterPath="$PROJECT_DIR$/src/modules/core/views/+auth/email-activate.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/core/routes/auth.js" afterPath="$PROJECT_DIR$/src/modules/core/routes/auth.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/core/views/+auth/login.vue" afterPath="$PROJECT_DIR$/src/modules/core/views/+auth/login.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/core/views/+user/+settings/profile.vue" afterPath="$PROJECT_DIR$/src/modules/core/views/+user/+settings/profile.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/core/views/+user/+settings/security.vue" afterPath="$PROJECT_DIR$/src/modules/core/views/+user/+settings/security.vue" />
     </list>
     <ignored path="zix-start.iws" />
@@ -109,23 +104,24 @@
       <file leaf-file-name="security.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/modules/core/views/+user/+settings/security.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="52" column="124" lean-forward="false" selection-start-line="52" selection-start-column="124" selection-end-line="52" selection-end-column="124" />
+            <state relative-caret-position="552">
+              <caret line="113" column="22" lean-forward="false" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
               <folding>
-                <marker date="1482059227070" expanded="true" signature="3775:3867" ph="..." />
-                <marker date="1482059227070" expanded="true" signature="3884:3950" ph="{...}" />
-                <marker date="1482059227070" expanded="true" signature="3906:3944" ph="{&quot;SettingSidebar&quot;: SettingSidebar...}" />
-                <marker date="1482059227070" expanded="true" signature="3994:5322" ph="{...}" />
-                <marker date="1482059227070" expanded="true" signature="4011:4377" ph="{...}" />
-                <marker date="1482059227070" expanded="true" signature="4032:4366" ph="{...}" />
-                <marker date="1482059227070" expanded="true" signature="4060:4201" ph="{&quot;old_password&quot;: ''...}" />
-                <marker date="1482059227070" expanded="true" signature="4225:4352" ph="{...}" />
-                <marker date="1482059227070" expanded="true" signature="4396:4518" ph="{...}" />
-                <marker date="1482059227070" expanded="true" signature="4543:4663" ph="{...}" />
-                <marker date="1482059227070" expanded="true" signature="4682:5316" ph="{...}" />
-                <marker date="1482059227070" expanded="true" signature="4861:5102" ph="{...}" />
-                <marker date="1482059227070" expanded="true" signature="5000:5083" ph="{&quot;message&quot;: response.data.data.message...}" />
-                <marker date="1482059227070" expanded="true" signature="5136:5304" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="3775:3867" ph="..." />
+                <marker date="1482059603019" expanded="true" signature="3884:3950" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="3906:3944" ph="{&quot;SettingSidebar&quot;: SettingSidebar...}" />
+                <marker date="1482059603019" expanded="true" signature="3994:5516" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="4011:4377" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="4032:4366" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="4060:4201" ph="{&quot;old_password&quot;: ''...}" />
+                <marker date="1482059603019" expanded="true" signature="4225:4352" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="4396:4518" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="4543:4663" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="4682:5510" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="4861:5296" ph="{...}" />
+                <marker date="1482059603019" expanded="true" signature="5000:5083" ph="{&quot;message&quot;: response.data.data.message...}" />
+                <marker date="1482059603019" expanded="true" signature="5121:5278" ph="{&quot;current_password&quot;: ''...}" />
+                <marker date="1482059603019" expanded="true" signature="5330:5498" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -720,12 +716,12 @@
       <workItem from="1481194562596" duration="7631000" />
       <workItem from="1481280372823" duration="144000" />
       <workItem from="1481993073310" duration="8236000" />
-      <workItem from="1482056315744" duration="1708000" />
+      <workItem from="1482056315744" duration="2083000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43983000" />
+    <option name="totallyTimeSpent" value="44358000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -1114,23 +1110,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/core/views/+user/+settings/security.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="52" column="124" lean-forward="false" selection-start-line="52" selection-start-column="124" selection-end-line="52" selection-end-column="124" />
+        <state relative-caret-position="552">
+          <caret line="113" column="22" lean-forward="false" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
           <folding>
-            <marker date="1482059227070" expanded="true" signature="3775:3867" ph="..." />
-            <marker date="1482059227070" expanded="true" signature="3884:3950" ph="{...}" />
-            <marker date="1482059227070" expanded="true" signature="3906:3944" ph="{&quot;SettingSidebar&quot;: SettingSidebar...}" />
-            <marker date="1482059227070" expanded="true" signature="3994:5322" ph="{...}" />
-            <marker date="1482059227070" expanded="true" signature="4011:4377" ph="{...}" />
-            <marker date="1482059227070" expanded="true" signature="4032:4366" ph="{...}" />
-            <marker date="1482059227070" expanded="true" signature="4060:4201" ph="{&quot;old_password&quot;: ''...}" />
-            <marker date="1482059227070" expanded="true" signature="4225:4352" ph="{...}" />
-            <marker date="1482059227070" expanded="true" signature="4396:4518" ph="{...}" />
-            <marker date="1482059227070" expanded="true" signature="4543:4663" ph="{...}" />
-            <marker date="1482059227070" expanded="true" signature="4682:5316" ph="{...}" />
-            <marker date="1482059227070" expanded="true" signature="4861:5102" ph="{...}" />
-            <marker date="1482059227070" expanded="true" signature="5000:5083" ph="{&quot;message&quot;: response.data.data.message...}" />
-            <marker date="1482059227070" expanded="true" signature="5136:5304" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="3775:3867" ph="..." />
+            <marker date="1482059603019" expanded="true" signature="3884:3950" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="3906:3944" ph="{&quot;SettingSidebar&quot;: SettingSidebar...}" />
+            <marker date="1482059603019" expanded="true" signature="3994:5516" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="4011:4377" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="4032:4366" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="4060:4201" ph="{&quot;old_password&quot;: ''...}" />
+            <marker date="1482059603019" expanded="true" signature="4225:4352" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="4396:4518" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="4543:4663" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="4682:5510" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="4861:5296" ph="{...}" />
+            <marker date="1482059603019" expanded="true" signature="5000:5083" ph="{&quot;message&quot;: response.data.data.message...}" />
+            <marker date="1482059603019" expanded="true" signature="5121:5278" ph="{&quot;current_password&quot;: ''...}" />
+            <marker date="1482059603019" expanded="true" signature="5330:5498" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -108,6 +108,11 @@
                     this.form.errors = {
                         message: response.data.data.message
                     };
+                    this.password = {
+                        current_password: '',
+                        password: '',
+                        password_confirmation: ''
+                    }
                 })
                 .catch(error => {
                     this.form.submitted = true;
