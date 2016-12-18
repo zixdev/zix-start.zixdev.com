@@ -14,9 +14,10 @@
                         <img width="150px" v-if="$store.state.user && $store.state.user.avatar" class="img-thumbnail ounded mx-auto d-block" :src="$store.state.user.avatar">
                         <img v-else class="img-responsive" src="https://www.gravatar.com/avatar/8798bd6307b5288654155f168d4288bf.jpg?s=200&amp;d=mm">
                         <br>
-                        <a href="#" class="btn btn-primary text-uppercase">Upload New Photo</a>
-                    </div>
-                    <div class="card-block">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Select New Photo
+                        </button>
+
                     </div>
                 </div>
                 <div class="card">
@@ -60,12 +61,63 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <ul class="nav nav-tabs modal-header" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#select-image" role="tab">Select From My Images</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#upload-image" role="tab">Upload New One</a>
+                        </li>
+                    </ul>
+                    <div class="modal-body">
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane" id="select-image" role="tabpanel">
+                                <div class="row">
+                                    <a href="javascript:void(0);" v-for="image in images"
+                                       @click="selectAvatar(image)"
+                                       class="col-md-3 text-md-center"
+                                        style="height: 200px"
+                                       :title="image.name"
+                                    >
+                                        <img :src="image.url"
+                                             class="img-fluid img-thumbnail">
+                                        <span >
+                                            {{ image.name.substring(0, 10) }} ...
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="tab-pane active" id="upload-image" role="tabpanel">
+                                <form class="dropzone">
+                                    <div class="fallback">
+                                        <input name="file" type="file" multiple/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script type="text/babel">
     import Component from 'vue-class-component';
     import SettingSidebar from './setting-sidebar.vue';
+    import Dropzone from 'dropzone';
 
     @Component({
         components: {
@@ -75,6 +127,7 @@
     export default class ProfileSettings {
         data() {
             return {
+                images: [],
                 form: {
                     submitting: false,
                     submitted: false,
@@ -86,7 +139,27 @@
             return this.$store.state.user;
         }
         mounted() {
-            console.info('profile.vue Been Created')
+            Dropzone.autoDiscover = false;
+            new Dropzone('form.dropzone', {
+                url:  this.$store.state.config.api_url + 'user/upload-avatar',
+                dictDefaultMessage: "<strong class='text-center'>Drop New Image Here. </strong>",
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                },
+                paramName: "avatar", // The name that will be used to transfer the file
+                maxFilesize: 100, // MB,
+
+                success: (response, server) => {
+                    this.$store.state.user = server.data.user
+                },
+
+                error: (item, err) => {
+                    console.log(err);
+                    this.form.errors = err;
+                }
+            });
+
+            this.getUserImages()
         }
 
         getError(name) {
@@ -112,6 +185,20 @@
                 .catch(error => {
                     this.form.errors = error.data;
                     this.form.submitting = false;
+                });
+        }
+
+        getUserImages() {
+            this.$http.get(this.$store.state.config.api_url + 'user/images')
+                .then(response => {
+                    this.images = response.data.data.images
+                })
+        }
+        selectAvatar(image) {
+            let param = {url: image.url}
+            this.$http.post(this.$store.state.config.api_url + 'user/select-avatar', param)
+                .then(response => {
+                    this.$store.state.user = response.data.data.user
                 });
         }
     }

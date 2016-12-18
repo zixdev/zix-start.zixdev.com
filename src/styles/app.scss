@@ -2,3 +2,5 @@
 $fa-font-path: '~font-awesome/fonts/';
 @import '~font-awesome/scss/font-awesome';
 @import "vendors/tether";
+@import "../../node_modules/dropzone/src/dropzone";
+@import '~animate.css';
