@@ -56,7 +56,7 @@
                             <div class="form-group row">
 
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" :disabled="form.submitting">
                                         <i v-if="form.submitting" class="fa fa-spinner fa-pulse"></i>
                                         <i v-else class="fa fa-sign-in"></i>
                                         {{$t('auth.login')}}

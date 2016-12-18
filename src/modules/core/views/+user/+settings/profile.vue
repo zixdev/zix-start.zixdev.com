@@ -21,16 +21,17 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Contact Information
+                        Account Information
                     </div>
                     <div class="card-block">
-                       <form>
+                       <form @submit.prevent="updateProfile()">
                            <div class="form-group row">
                                <div class="col-md-4 text-md-right col-form-label">
                                    <label for="username">Username :</label>
                                </div>
                                <div class="col-md-8">
-                                   <input type="text" class="form-control" id="username"  placeholder="Enter Your Username ...">
+                                   <input type="text" v-model="user.username" class="form-control" id="username"  placeholder="Enter Your Username ...">
+                                   <span v-if="getError('username')" class="text-danger clearfix">{{ getError('username') }}</span>
                                </div>
                            </div>
                            <div class="form-group row">
@@ -38,14 +39,20 @@
                                    <label for="email">Email address:</label>
                                </div>
                                <div class="col-md-8">
-                                   <input type="email" class="form-control" id="email"  placeholder="Enter Your Email Address ...">
+                                   <input type="email" v-model="user.email" class="form-control" id="email"  placeholder="Enter Your Email Address ...">
+                                   <span v-if="getError('email')" class="text-danger clearfix">{{ getError('email') }}</span>
                                </div>
                            </div>
                            <div class="form-group row">
                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary text-uppercase">
+                                    <button type="submit" class="btn btn-primary text-uppercase" :disabled="form.submitting">
+                                        <i v-if="form.submitting" class="fa fa-spinner fa-pulse"></i>
+                                        <i v-else class="fa fa-edit"></i>
                                         Update
                                     </button>
+                                   <span v-if="getError('message')" class="text-success">
+                                        {{ getError('message') }}
+                                    </span>
                                </div>
                            </div>
                        </form>
@@ -66,8 +73,46 @@
         }
     })
     export default class ProfileSettings {
-        created() {
+        data() {
+            return {
+                form: {
+                    submitting: false,
+                    submitted: false,
+                    errors: {}
+                }
+            }
+        }
+        get user() {
+            return this.$store.state.user;
+        }
+        mounted() {
             console.info('profile.vue Been Created')
+        }
+
+        getError(name) {
+            return (this.form.errors && this.form.errors[name]) ? this.form.errors[name].toString() : false;
+        }
+
+        updateProfile() {
+            this.form.submitting = true;
+            this.form.errors = {};
+
+            let user = {
+                username: this.user.username,
+                email: this.user.email
+            }
+            this.$http.post(this.$store.state.config.api_url + 'user', user)
+                .then(response => {
+                    this.$store.state.user = response.data.data.user
+                    this.form.errors = {
+                        message: response.data.data.message
+                    };
+                    this.form.submitting = false;
+                })
+                .catch(error => {
+                    this.form.errors = error.data;
+                    this.form.submitting = false;
+                });
         }
     }
 </script>

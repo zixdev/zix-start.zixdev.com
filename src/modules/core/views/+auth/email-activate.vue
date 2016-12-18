@@ -3,14 +3,14 @@
         <div class="text-md-center">
             <div v-if="loading">
                 <h2>
-                    Activating Your Account Please Wait
+                    Activating Your Email Please Wait
                 </h2>
                 <br>
                 <i class="fa fa-spinner fa-spin fa-5x"></i>
             </div>
             <div v-else>
                 <h2>
-                    Your Account Was Successfully Activated
+                    Your Email Was Successfully Activated
                 </h2>
                 <router-link to="/" class="btn btn-primary">
                     <i class="fa fa-home"></i>

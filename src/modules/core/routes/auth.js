@@ -59,11 +59,11 @@ export default [
         component: lazyLoading('+auth/forgot-password')
     },
     {
-        name: 'auth.account_activate',
-        path: '/auth/account/activate/:code',
+        name: 'auth.email_activate',
+        path: '/auth/email/activate/:code',
         meta: {
             // guest: true,
         },
-        component: lazyLoading('+auth/account-activate')
+        component: lazyLoading('+auth/email-activate')
     }
 ]

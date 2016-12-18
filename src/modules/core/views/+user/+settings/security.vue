@@ -11,16 +11,17 @@
                         Update Password
                     </div>
                     <div class="card-block">
-                        <form>
+                        <form @submit.prevent="update()">
                             <div class="form-group row">
                                 <div class="col-md-4 text-md-right col-form-label">
                                     <label for="current_password">Current Password :</label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="password" class="form-control"
-                                           v-model="password.old_password"
+                                           v-model="password.current_password"
                                            id="current_password"
                                            placeholder="Enter Your Old Password ...">
+                                    <span v-if="getError('current_password')" class="text-danger clearfix">{{ getError('current_password') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -28,7 +29,11 @@
                                     <label for="password">Password :</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="password" class="form-control" id="password"  placeholder="Enter Your New Password ...">
+                                    <input type="password" class="form-control"
+                                           v-model="password.password"
+                                           id="password"
+                                           placeholder="Enter Your New Password ...">
+                                    <span v-if="getError('password')" class="text-danger clearfix">{{ getError('password') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -36,15 +41,22 @@
                                     <label for="confirm_password">Confirm Password :</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="password" class="form-control" id="confirm_password"  placeholder="Confirm Your New Password...">
+                                    <input type="password" class="form-control"
+                                           v-model="password.password_confirmation"
+                                           id="confirm_password"
+                                           placeholder="Confirm Your New Password...">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary text-uppercase">
+                                    <button type="submit" class="btn btn-primary text-uppercase" :disabled="form.submitting">
+                                        <i v-if="form.submitting" class="fa fa-spinner fa-pulse"></i>
                                         Update
                                     </button>
+                                    <span v-if="getError('message')" class="text-success">
+                                        {{ getError('message') }}
+                                    </span>
                                 </div>
                             </div>
                         </form>
@@ -68,14 +80,40 @@
         data() {
             return {
                 password: {
-                    old_password: '',
+                    current_password: '',
                     password: '',
-                    confirm_password: ''
+                    password_confirmation: ''
+                },
+                form: {
+                    submitting: false,
+                    submitted: false,
+                    errors: {}
                 }
             };
         }
         mounted() {
-            if (this.$route.query.setPassword) this.password.old_password = this.$route.query.setPassword;
+            if (this.$route.query.setPassword) this.password.current_password = this.$route.query.setPassword;
+        }
+
+        getError(name) {
+            return (this.form.errors && this.form.errors[name]) ? this.form.errors[name].toString() : false;
+        }
+
+        update() {
+            this.form.submitting = true;
+            this.$http.post(this.$store.state.config.api_url + 'user/change-password', this.password)
+                .then(response => {
+                    this.form.submitted = true;
+                    this.form.submitting = false;
+                    this.form.errors = {
+                        message: response.data.data.message
+                    };
+                })
+                .catch(error => {
+                    this.form.submitted = true;
+                    this.form.submitting = false;
+                    this.form.errors = error.data;
+                });
         }
     }
 </script>
